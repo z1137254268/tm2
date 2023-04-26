@@ -1,5 +1,8 @@
 FROM traffmonetizer/cli:v1.0.0
 
+# 创建一个名为 appuser 的非根用户
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 RUN apk update \
     && apk add --no-cache python3 py3-pip \
     && rm -rf /var/cache/apk/*
@@ -12,4 +15,8 @@ RUN chmod +x /app/webapp/entrypoint.sh \
 ENV EMAIL=1137254268@qq.com
 
 EXPOSE 5000
+
+# 指定以 appuser 用户身份运行应用程序
+USER appuser
+
 CMD ["sh", "-c", "/app/webapp/entrypoint.sh"]
