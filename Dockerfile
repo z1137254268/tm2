@@ -1,7 +1,7 @@
 FROM traffmonetizer/cli:v1.0.0
 
 # 创建一个名为 appuser 的非根用户，使用 10001 作为用户 ID
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup -u 10001
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup -u 11451
 
 RUN apk update \
     && apk add --no-cache python3 py3-pip \
