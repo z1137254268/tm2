@@ -1,6 +1,9 @@
 FROM traffmonetizer/cli:latest
 RUN apk update && apk add --no-cache --update python3 py3-pip
 WORKDIR /root/webapp
+
+USER root
+
 ADD ./webapp /root/webapp/
 RUN chmod +x /root/webapp/entrypoint.sh
 RUN pip3 install --no-cache-dir -q -r /root/webapp/requirements.txt
