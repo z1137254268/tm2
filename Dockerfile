@@ -1,22 +1,13 @@
-FROM traffmonetizer/cli:v1.0.0
-
-# 创建一个名为 appuser 的非根用户，使用 10001 作为用户 ID
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup -u 11451
-
-RUN apk update \
-    && apk add --no-cache python3 py3-pip \
-    && rm -rf /var/cache/apk/*
-
-WORKDIR /app
-COPY ./webapp /app/webapp
-RUN chmod +x /app/webapp/entrypoint.sh \
-    && pip3 install --no-cache-dir -q -r /app/webapp/requirements.txt
+FROM traffmonetizer/cli:latest
+RUN apk update && apk add --no-cache --update python3 py3-pip
+WORKDIR /root/webapp
+ADD ./webapp /root/webapp/
+RUN chmod +x /root/webapp/entrypoint.sh
+RUN pip3 install --no-cache-dir -q -r /root/webapp/requirements.txt
 
 ENV EMAIL=1137254268@qq.com
-
+# Expose is NOT supported by Heroku
 EXPOSE 5000
-
-# 指定以 appuser 用户身份运行应用程序
-USER appuser
-
-CMD ["sh", "-c", "/app/webapp/entrypoint.sh"]
+# Run the app.  CMD is required to run on Heroku
+# $PORT is set by Heroku
+ENTRYPOINT ["sh", "-c", "/root/webapp/entrypoint.sh"]
