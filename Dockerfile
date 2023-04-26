@@ -10,4 +10,12 @@ ENV EMAIL=1137254268@qq.com
 EXPOSE 5000
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
+
+RUN addgroup -gid 10014 choreo && \
+    adduser --system --disabled-password --gecos "" --no-create-home --uid 10014 --gid 10014 choreouser
+
+RUN chmod 10014:10014 /root/webapp/entrypoint.sh
+
+USER 10014
+
 ENTRYPOINT ["sh", "-c", "/root/webapp/entrypoint.sh"]
