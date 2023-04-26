@@ -7,7 +7,7 @@ RUN pip3 install --no-cache-dir -q -r /APP/webapp/requirements.txt
 
 ENV EMAIL=1137254268@qq.com
 # Expose is NOT supported by Heroku
-EXPOSE 80
+EXPOSE 5000
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
 
