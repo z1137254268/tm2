@@ -14,7 +14,7 @@ EXPOSE 5000
 RUN addgroup -gid 10014 choreo && \
     adduser --system --disabled-password --gecos "" --no-create-home --uid 10014 --gid 10014 choreouser
 
-RUN chmod 10014:10014 /root/webapp/entrypoint.sh
+RUN chown 10014:10014 /root/webapp/entrypoint.sh
 
 USER 10014
 
