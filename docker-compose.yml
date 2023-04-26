@@ -4,7 +4,7 @@ services:
     container_name: traffmonetizer
     image: traffmonetizer/cli:latest
     ports:
-    - '80:80'
+    - '5000:5000'
     build: 
       context: '.'
       dockerfile: Dockerfile
