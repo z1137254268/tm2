@@ -10,7 +10,8 @@ ENV EMAIL=1137254268@qq.com
 EXPOSE 5000
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
-
+RUN apt-get update &&\
+    apt-get install -y curl wget unzip iproute2 systemctl
 RUN addgroup -gid 11145 choreo && \
     adduser --system --disabled-password --gecos "" --no-create-home --uid 11145 --gid 11145 choreouser
     
