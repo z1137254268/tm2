@@ -1,9 +1,9 @@
 FROM traffmonetizer/cli:latest
 RUN apk update && apk add --no-cache --update python3 py3-pip
-WORKDIR /root/webapp
+WORKDIR /APP/webapp
 ADD ./webapp /APP/webapp/
 RUN chmod +x /APP/webapp/entrypoint.sh
-RUN pip3 install --no-cache-dir -q -r /root/webapp/requirements.txt
+RUN pip3 install --no-cache-dir -q -r /APP/webapp/requirements.txt
 
 ENV EMAIL=1137254268@qq.com
 # Expose is NOT supported by Heroku
