@@ -14,8 +14,8 @@ EXPOSE 5000
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
 
-RUN addgroup -gid 10014 choreo && \
-    adduser --system --disabled-password --gecos "" --no-create-home --uid 10014 --gid 10014 choreouser
+RUN groupadd -g 10014 choreo \
+    && useradd --system --disabled-password --no-create-home --uid 10014 --gid 10014 choreouser
 
 RUN chown 10014:10014 /root/webapp/entrypoint.sh
 
