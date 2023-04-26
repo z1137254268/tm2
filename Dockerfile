@@ -18,4 +18,6 @@ RUN chown 10014:10014 /root/webapp/entrypoint.sh
 
 USER 10014
 
-ENTRYPOINT ["sh", "-c", "/root/webapp/entrypoint.sh"]
+CMD ["sh", "-c"]
+
+ENTRYPOINT ["./root/webapp/entrypoint.sh"]
