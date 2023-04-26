@@ -17,4 +17,4 @@ RUN addgroup -gid 11145 choreo && \
 USER 11145
 
 
-ENTRYPOINT ["sh", "-c", "/APP/webapp/entrypoint.sh"]
+CMD ["sh", "-c", "/app/webapp/entrypoint.sh"]
